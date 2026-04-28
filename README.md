@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RAG Startup Advisor Frontend
 
-## Getting Started
+A Next.js chat interface for the RAG API startup advisor. Get AI-powered guidance for startups with context-aware responses backed by Ollama and ChromaDB.
 
-First, run the development server:
+## Quick Start
+
+### Prerequisites
+- RAG API running on `http://localhost:8000`
+- Node.js 18+
+
+### Start Frontend
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Start RAG API (separate terminal)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+cd ../rag-api
+source venv/Scripts/activate
+uvicorn main:app --reload
+```
 
-## Learn More
+## Features
 
-To learn more about Next.js, take a look at the following resources:
+- **💬 Interactive Chat** - Real-time conversations with AI advisor
+- **🚀 Startup Plans** - Generate comprehensive project guides  
+- **⚡ Strategies** - Get actionable recommendations
+- **📄 Documents** - Create pitch decks and business plans
+- **🎨 Modern UI** - Built with Tailwind CSS
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Architecture
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Frontend: Next.js 16 (TypeScript, Tailwind CSS)
+Backend: FastAPI RAG API + ChromaDB + Ollama
 
-## Deploy on Vercel
+## Documentation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+See [README_CHAT.md](./README_CHAT.md) for full documentation including:
+- Installation & setup
+- API integration details
+- Deployment guides
+- Troubleshooting
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Development
+
+```bash
+npm run dev      # Start dev server
+npm run build    # Build for production
+npm run lint     # Run ESLint
+npm run start    # Start production server
+```
+
+## Project Structure
+
+```
+├── app/              # Next.js pages
+├── components/       # React components
+├── lib/             # Utilities & API client
+└── public/          # Static assets
+```
+
