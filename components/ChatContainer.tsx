@@ -32,7 +32,7 @@ export function ChatContainer() {
             id: '1',
             role: 'assistant',
             content:
-              'Welcome to the RAG Startup Advisor! 🚀\n\nI can help you with:\n• Answering startup questions\n• Generating comprehensive startup plans\n• Providing strategic recommendations\n• Creating business documents\n\nWhat would you like to know?',
+              'Welcome to the Project Config Startup Advisor! 🚀\n\nI can help you with: Project configuration guides for the following: \n• React Frontend\n• Next Fronn\n• Node + Express Backend\n  Python + FastAPI Backend\n\nWhat would you like to know?',
             timestamp: new Date(),
             type: 'question',
           },

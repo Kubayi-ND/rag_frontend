@@ -2,6 +2,7 @@
 
 import { ChatMessage as ChatMessageType } from '@/lib/types';
 import { MessageCircle, Lightbulb, Zap, FileText } from 'lucide-react';
+import { JSX } from 'react';
 
 interface ChatMessageProps {
   message: ChatMessageType;
@@ -9,6 +10,60 @@ interface ChatMessageProps {
 
 export function ChatMessage({ message }: ChatMessageProps) {
   const isUser = message.role === 'user';
+
+  const parseAndFormatContent = (content: string) => {
+    const parts: (string | JSX.Element)[] = [];
+    let lastIndex = 0;
+
+    // Match both code blocks and headings
+    const regex = /```[\s\S]*?```|###\s+.+/g;
+    let match;
+
+    while ((match = regex.exec(content)) !== null) {
+      // Add text before this match
+      if (match.index > lastIndex) {
+        parts.push(content.substring(lastIndex, match.index));
+      }
+
+      // Handle code blocks
+      if (match[0].startsWith('```')) {
+        const code = match[0].slice(3, -3).trim();
+        parts.push(
+          <div key={`code-${parts.length}`} className="bg-white rounded p-2 my-2 overflow-x-auto">
+            <pre className="text-gray-900 text-xs font-mono whitespace-pre-wrap break-words">
+              {code}
+            </pre>
+          </div>
+        );
+      }
+      // Handle headings
+      else if (match[0].startsWith('###')) {
+        const heading = match[0].replace(/^###\s+/, '').trim();
+        parts.push(
+          <h2 key={`h2-${parts.length}`} className="text-lg font-bold mt-2 mb-1">
+            {heading}
+          </h2>
+        );
+      }
+      else if (match[0].startsWith('**')) {
+        const heading = match[0].replace(/^\*\*\s+/, '').trim();
+        parts.push(
+          <h2 key={`h2-${parts.length}`} className="text-lg font-bold mt-2 mb-1">
+            {heading}
+          </h2>
+        );
+      }
+
+      lastIndex = match.index + match[0].length;
+    }
+
+    // Add remaining text
+    if (lastIndex < content.length) {
+      parts.push(content.substring(lastIndex));
+    }
+
+    return parts.length > 0 ? parts : content;
+  };
   
   const formatTime = (date: Date) => {
     return date.toLocaleTimeString('en-US', { 
@@ -48,7 +103,9 @@ export function ChatMessage({ message }: ChatMessageProps) {
             {formatTime(message.timestamp)}
           </div>
         </div>
-        <p className="whitespace-pre-wrap text-sm">{message.content}</p>
+        <div className="text-sm whitespace-pre-wrap">
+          {parseAndFormatContent(message.content)}
+        </div>
         {message.contextUsed && message.contextUsed.length > 0 && (
           <div className={`mt-3 pt-3 border-t ${isUser ? 'border-blue-500' : 'border-gray-300'}`}>
             <p className="text-xs font-semibold opacity-75">Sources:</p>

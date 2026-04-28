@@ -40,39 +40,7 @@ export function ChatInput({
         >
           Ask Question
         </button>
-        <button
-          onClick={() => setMessageType('startup-plan')}
-          className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
-            messageType === 'startup-plan'
-              ? 'bg-blue-600 text-white'
-              : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-          }`}
-          disabled={isLoading || disabled}
-        >
-          Generate Plan
-        </button>
-        <button
-          onClick={() => setMessageType('strategies')}
-          className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
-            messageType === 'strategies'
-              ? 'bg-blue-600 text-white'
-              : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-          }`}
-          disabled={isLoading || disabled}
-        >
-          Get Strategies
-        </button>
-        <button
-          onClick={() => setMessageType('document')}
-          className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
-            messageType === 'document'
-              ? 'bg-blue-600 text-white'
-              : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-          }`}
-          disabled={isLoading || disabled}
-        >
-          Generate Doc
-        </button>
+       
       </div>
 
       <form onSubmit={handleSubmit} className="flex gap-2">
@@ -82,15 +50,11 @@ export function ChatInput({
           onChange={(e) => setInput(e.target.value)}
           placeholder={
             messageType === 'question'
-              ? 'Ask a startup question...'
-              : messageType === 'startup-plan'
-              ? 'Describe your startup idea...'
-              : messageType === 'strategies'
-              ? 'Enter a topic for strategies...'
-              : 'Enter document title...'
+              ? 'Ask a project setup question...'
+              : ''
           }
           disabled={isLoading || disabled}
-          className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+          className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
         />
         <button
           type="submit"
