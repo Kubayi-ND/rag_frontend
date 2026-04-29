@@ -27,21 +27,7 @@ export function ChatInput({
   };
 
   return (
-    <div className="border-t border-gray-300 p-4 bg-gray-50">
-      <div className="mb-3 flex flex-wrap gap-2">
-        <button
-          onClick={() => setMessageType('question')}
-          className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
-            messageType === 'question'
-              ? 'bg-blue-600 text-white'
-              : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-          }`}
-          disabled={isLoading || disabled}
-        >
-          Ask Question
-        </button>
-       
-      </div>
+    <div className="p-4 bg-gray-50">
 
       <form onSubmit={handleSubmit} className="flex gap-2">
         <input

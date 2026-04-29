@@ -87,15 +87,15 @@ export function ChatMessage({ message }: ChatMessageProps) {
   };
 
   return (
-    <div className={`flex ${isUser ? 'justify-end' : 'justify-start'} mb-4`}>
+    <div className={`flex ${isUser ? 'justify-end' : 'justify-start'} mb-4 p-4`}>
       <div
         className={`max-w-[70%] rounded-lg p-4 ${
           isUser
-            ? 'bg-blue-600 text-white rounded-br-none'
-            : 'bg-gray-200 text-gray-900 rounded-bl-none'
+            ? 'bg-blue-600 text-white shadow-lg'
+            : 'bg-gray-200 text-gray-900 shadow-lg'
         }`}
       >
-        <div className="flex items-start gap-2 mb-2">
+        <div className="flex items-start gap-2 mmb-2">
           <div className={isUser ? 'text-blue-200' : 'text-gray-500'}>
             {getIcon()}
           </div>

@@ -121,10 +121,10 @@ export function ChatContainer() {
   return (
     <div className="flex flex-col h-screen bg-white">
       {/* Header */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4 shadow-md">
+      <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4  shadow-md ">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold">RAG Startup Advisor</h1>
+            <h1 className="text-2xl font-bold">Project Startup Advisor</h1>
             <p className="text-blue-100 text-sm">Powered by Ollama & ChromaDB</p>
           </div>
           <div className="flex items-center gap-2">
@@ -167,7 +167,7 @@ export function ChatContainer() {
       )}
 
       {/* Messages Area */}
-      <div className="flex-1 overflow-y-auto p-4 max-w-6xl mx-auto w-full">
+      <div className="flex-1 overflow-y-auto p-4 max-w-6xl mx-auto w-full ">
         {messages.length === 0 ? (
           <div className="flex items-center justify-center h-full">
             <div className="text-center text-gray-500">
@@ -187,7 +187,7 @@ export function ChatContainer() {
       </div>
 
       {/* Input Area */}
-      <div className="max-w-6xl mx-auto w-full">
+      <div className="max-w-6xl mx-auto w-full ">
         <ChatInput
           onSendMessage={handleSendMessage}
           isLoading={isLoading}
